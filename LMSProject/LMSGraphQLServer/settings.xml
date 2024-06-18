@@ -1,0 +1,28 @@
+<settings>
+    <mirrors>
+        <mirror>
+            <id>central</id>
+            <mirrorOf>central</mirrorOf>
+            <url>https://repo1.maven.org/maven2/</url>
+        </mirror>
+    </mirrors>
+
+    <profiles>
+        <profile>
+            <id>central-repo</id>
+            <repositories>
+                <repository>
+                    <id>central-repo</id>
+                    <url>https://repo1.maven.org/maven2/</url>
+                    <snapshots>
+                        <enabled>true</enabled>
+                    </snapshots>
+                </repository>
+            </repositories>
+        </profile>
+    </profiles>
+
+    <activeProfiles>
+        <activeProfile>central-repo</activeProfile>
+    </activeProfiles>
+</settings>

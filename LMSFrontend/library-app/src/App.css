@@ -1,0 +1,32 @@
+form {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  margin: auto;
+  padding: 1em;
+  border: 1px solid #ccc;
+  border-radius: 1em;
+}
+
+input {
+  margin-bottom: 1em;
+  padding: 0.5em;
+  border: 1px solid #ccc;
+  border-radius: 0.25em;
+}
+
+button {
+  padding: 0.5em;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 0.25em;
+}
+
+div {
+  text-align: center;
+}
+
+h3 {
+  margin: 0;
+}

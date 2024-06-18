@@ -1,0 +1,79 @@
+type Query {
+    getSearchedBooks(name: String, author: String, loginId: ID!): [Book!]!
+    getUserBorrowingInfos(studentId: ID!, loginId: ID!): [UserBorrowingInfos!]!
+    getBookById(bookId: ID!, loginId: ID!): Book
+    login(loginRequest: LoginInput!): UserLoginInfos!
+}
+
+type Mutation {
+    addBorrowBook(borrowBook: BorrowBookInput!, loginId: ID!): ReturnType!
+    addReturnBook(returnBook: ReturnBookInput!, loginId: ID!): ReturnType!
+    addBook(addBook: AddBookInput!, loginId: ID!): ReturnType!
+    deleteBook(bookId: ID!, loginId: ID!): ReturnType!
+}
+
+type UserLoginInfos {
+    userId: ID!
+    userType: UserType!
+}
+
+type Book {
+    id: ID!
+    name: String!
+    author: String!
+    type: BookType!
+    location: String!
+    available: String!
+}
+
+type UserBorrowingInfos {
+    book: Book!
+    borrowingTime: String!
+    dueDate: String!
+    returningTime: String!
+    paid: String!
+    fine: Int!
+}
+
+type ReturnType {
+    returnVal: String
+    returnLongVal: ID
+}
+
+input BorrowBookInput {
+    studentId: ID!
+    bookId: ID!
+    borrowingTime: String!
+    dueDate: String!
+}
+
+input ReturnBookInput {
+    studentId: ID!
+    bookId: ID!
+    returningTime: String!
+}
+
+input AddBookInput {
+    name: String!
+    author: String!
+    type: BookType!
+    location: String!
+}
+
+input LoginInput {
+    email: String!
+    password: String!
+}
+
+enum BookType {
+    BIOLOGY
+    PHYSICS
+    MATHEMATICS
+    SOCIAL
+}
+
+enum UserType {
+    LIBRARIAN
+    USER
+    ADMIN
+}

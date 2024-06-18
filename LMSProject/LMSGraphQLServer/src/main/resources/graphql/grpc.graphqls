@@ -1,0 +1,75 @@
+extend type Query {
+    getUserInfo(loginId: ID!, userId: ID!): User!
+}
+
+extend type Mutation {
+    addUser(Input: AddUserInput!): UserID!
+    deleteUser(Input: DeleteUserInput!): GenericResponse!
+    changePassword(Input: ChangePasswordInput!): GenericResponse!
+    updateContactInfo(Input: UpdateContactInfoInput!): GenericResponse!
+    updateUserInfo(Input: UpdateUserInfoInput!): GenericResponse!
+}
+
+type User {
+    studentID: Int!
+    name: String!
+    surname: String!
+    email: String!
+    password: String!
+    telNumber: String
+    location: String
+    department: String
+    type: UserType!
+}
+
+type GenericResponse {
+    message: String!
+}
+
+type UserID {
+    userID: Int!
+}
+
+type GetUserInfoResponse {
+    user: User!
+}
+
+input UserInput {
+    studentID: Int
+    name: String!
+    surname: String!
+    email: String!
+    password: String!
+    telNumber: String
+    location: String
+    department: String
+    type: UserType!
+}
+
+input AddUserInput {
+    loginID: Int!
+    user: UserInput!
+}
+
+input DeleteUserInput {
+    loginID: Int!
+    userID: Int!
+}
+
+input ChangePasswordInput {
+    loginID: Int!
+    oldPassword: String!
+    newPassword: String!
+}
+
+input UpdateContactInfoInput {
+    loginID: Int!
+    newTelNumber: String!
+    newLocation: String!
+}
+
+input UpdateUserInfoInput {
+    loginID: Int!
+    userID: Int!
+    user: UserInput!
+}
